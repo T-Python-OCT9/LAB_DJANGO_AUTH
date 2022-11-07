@@ -1,0 +1,57 @@
+{% extends "clinicApp/clinic.html" %}
+
+{% block home %}
+{%endblock%}
+
+
+{% block pu %}
+
+
+
+
+
+<div class="container pt-4">
+    <h1>Doctors :</h1>
+   
+
+  
+
+ <div class="row row-cols-1 row-cols-md-2 g-4 ">
+  
+  {% for doc in docor_p %}
+        <div class="col pt-4">
+          <div class="card pt-4">
+            <div class="card-body pt-4">
+                <h5 class="card-title text-center tex_co"> Dr.{{ doc.name }}</h5>
+              <a href="{% url 'clinicApp:views' doc.id %}" class="btn color-bt tx-color size_bt">view informions</a>
+     
+            </div>
+
+            
+          </div>
+
+
+
+  
+        
+
+        {% endfor %}
+
+
+        <hr>
+
+
+
+      </div>
+
+
+
+    </div>
+
+  </div>
+  
+
+
+
+
+{% endblock %}

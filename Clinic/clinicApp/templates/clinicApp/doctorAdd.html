@@ -1,0 +1,39 @@
+{% extends "clinicApp/clinic.html" %}
+
+{% block home %}
+{%endblock%}
+{% block do %}
+<div class="pt-4 container">
+    <form action="" method="POST">
+        {% csrf_token %}
+    <div class="input-group mb-3">
+        <span class="input-group-text">Doctor name:</span>
+        <input type="text" class="form-control" name="name">
+      </div>
+
+
+      <div class="input-group pt-4">
+        <span class="input-group-text">Talk about your silf:</span>
+        <textarea class="form-control" aria-label="With textarea" name="description"></textarea>
+      </div>
+
+      <div class="input-group pt-4 mb-3">
+        <span class="input-group-text">How much your experience? :</span>
+        <input type="text" class="form-control" name="experience_years">
+      </div>
+
+
+  
+
+
+      <div class="pt-2">
+      <input type="submit" value="Create"/>
+
+    </div>
+
+
+
+    </form>
+</div>
+
+{%endblock%}
