@@ -1,0 +1,93 @@
+{% extends 'Clinic_app/base.html' %}
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'static/Clinic_app/styles.css'%}" rel="stylesheet" >
+    <title>{% block title %}{{doctors.name}}{% endblock %}</title>
+</head>
+<body>
+{% block content %}
+<div class="align-items-center justify-content-center">
+    <div class="row ">
+      <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+            <div class="card-body bg-light">
+       
+            <div class = "container">
+             <form id="contact-form" role="form" action="" method="POST">
+                {%csrf_token%}
+            <div class="controls">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name">name  :</label>
+                            <input  type="name" name="name" class="form-control" value="{{doctors.name}}" >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Content">description:</label>
+                            <textarea name="description" class="form-control"  rows="4"  >{{doctors.description}}</textarea>
+                            </div>
+                     </div></div>
+                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="specialization">specialization : </label>
+                                <select   type="" class="form-select"   name="specialization" id="select" value="{{doctors.specialization}}" >
+                                    <option >specialization:</option>
+                                    <option value="Dentistry">Dentistry</option>
+                                    <option value="Pediatrice">Pediatrice</option>
+                                    <option value="Dermatology">Dermatology</option>
+                                    <option value="General Practitoner">General Practitoner</option></select>
+                            </div>
+                        </div>
+                    </div>
+                
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="experience_years"> experience_years: </label>
+                                <input  type="experience_years" name="experience_years" class="form-control" value="{{doctors.experience_years}}" >
+                            </div>
+                         </div></div>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label > rating: </label>
+                                <input  type="range" name="rating" class="form-range" min="0" step="0"  max="5" value="{{doctors.rating}}"  >
+                            </div>
+                         </div></div>
+
+                    
+                        
+                    
+                    <div class="col-md-12">
+                        <button type="submit" class="btn btn-secondary btn-send  pt-2 btn-block">update doctor!</button>
+                </div>
+          
+                </div>
+
+
+        </div>
+         </form>
+        </div>
+            </div>
+
+
+    </div>
+   
+
+    </div>
+ 
+
+
+
+{% endblock %}
