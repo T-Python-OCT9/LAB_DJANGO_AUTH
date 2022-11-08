@@ -1,0 +1,137 @@
+{% load static %}
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>{% block title %} Clinic Website{% endblock%}</title>
+  </head>
+  <div style="background-color:rgba(233, 244, 244, 0.825);">
+    <header class="d-flex justify-content-center py-3" >
+      <ul class="nav nav-pills">
+        <li class="nav-item"><a href="{% url 'clinic:home' %}" class="nav-link px-2 text-secondary" aria-current="page">Home</a></li>
+        <li class="nav-item"><a href="{% url 'clinic:all_doctors' %}"class="nav-link px-2 text-secondary">Doctors</a></li>
+        <li class="nav-item"><a href="{% url 'clinic:add_new_doctor' %}" class="nav-link px-2 text-secondary">Add new docotr</a></li>
+        <li class="nav-item"><a href="{% url 'clinic:appointments' %}" class="nav-link px-2 text-secondary">New Appointment</a></li>
+  
+        <li class="nav-item">
+                      {% if request.user.is_authenticated %}
+                      <div class="d-flex flex-row">
+                        <strong class="text-dark nav-link">Welcome {{ request.user.first_name }}</strong>
+                        <a class="nav-link" href="{% url 'account:logOut' %}">Logout</a>
+                      </div>
+                      {% else %}
+  
+                      <li><a href="{% url 'account:logIn' %}" class="nav-link px-2 text-secondary">Login</a></li>
+                      <li><a href="{% url 'account:register' %}" class="nav-link px-2 text-secondary">Regiter</a></li>
+                      
+                      {% endif %}
+                    </li>
+  
+                  </ul>
+      </ul>
+  
+      
+    </header>
+    <div class=" container active-cyan-3 active-cyan-4 mb-4">
+      <form role="search" method="GET" action="{% url 'clinic:list_doctors' %}">
+        <input class="form-control" type="search" placeholder="Search Name the Doctor" name="search" aria-label="Search">
+      </form>
+      
+    
+    </div>
+    <hr>
+  </div>
+  <div class="container-fluid mt-2">
+    {% block content %}
+  <body style="background-color:rgba(248, 252, 252, 0.825);">
+    <div class="container">
+      
+    <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+      <div class="carousel-inner" >
+        <div class="carousel-item active">
+          <img class="d-block w-100"   height="400px" width="70px" src="{% static 'images/clinic.jpg' %}" alt="First slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" height="400px" width="70px" src="{% static 'images/pic2.jpg' %}" alt="Second slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" height="400px" width="70px" src="{% static 'images/pic3.jpg' %}" alt="Third slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" height="400px" width="70px" src="{% static 'images/pic1.jpg' %}" alt="4th slide">
+        </div>
+        <div class="carousel-item">
+          <img class="d-block w-100" height="400px" width="70px" src="{% static 'images/pic4.jpg' %}" alt="5th slide">
+        </div>
+      </div>
+      <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+        <span class="sr-only">Previous</span>
+      </a>
+      <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+        <span class="sr-only">Next</span>
+      </a>
+    </div>
+  </div>
+    <br><h2 style="text-align:center; font-family:Arial, Helvetica, sans-serif; background-color:rgba(233, 244, 244, 0.825); border-radius: 12px;">Welcome to our Clinic </h2>
+  </div>
+  <br>
+
+  <div class="container marketing">
+
+    <!-- Three columns of text below the carousel -->
+    <div class="row">
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+        <h3 class="fw-normal">Mohammed Khaled</h3>
+        <p>surgery</p>
+        <p>15 years experience </p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+        <h3 class="fw-normal">Abdullah Fahad</h3>
+        <p>family Medicine</p>
+        <p>22 years experience </p>
+      </div><!-- /.col-lg-4 -->
+      <div class="col-lg-4">
+        <svg class="bd-placeholder-img rounded-circle" width="140" height="140" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Placeholder: 140x140" preserveAspectRatio="xMidYMid slice" focusable="false"><title>Placeholder</title><rect width="100%" height="100%" fill="#777"></rect><text x="50%" y="50%" fill="#777" dy=".3em">140x140</text></svg>
+
+        <h3 class="fw-normal">Amani mohammed</h3>
+        <p>dental</p>
+        <p>10 years experience </p>
+  
+      </div><!-- /.col-lg-4 -->
+      
+    </div><!-- /.row -->
+    <br>
+    <div class="d-grid gap-2">
+    <a class="btn btn-outline" href="{% url 'clinic:all_doctors' %}">View all doctors and details »</a></p>
+  </div>
+  </div>
+ 
+    <!-- Optional JavaScript -->
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+  </body>
+  {% endblock %}
+  </div>
+
+  <style>
+    .carouselslide{
+      height: 50px;
+      width: 20px;
+      
+    }
+  </style>
+</html>
