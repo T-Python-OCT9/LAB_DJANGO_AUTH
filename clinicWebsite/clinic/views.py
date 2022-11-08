@@ -18,6 +18,7 @@ def all_doctors(request :HttpRequest):
 
        return render(request, "clinic/all_doctors.html", {"doctor" : all_doctor})
 
+
 def add_new_doctor(request :HttpRequest):
     user : User = request.user
 
@@ -37,6 +38,8 @@ def list_doctors(request :HttpRequest ):
 
        return render(request, "clinic/doctor_detail.html", {"doctor" : details_name})
 
+def only_manager(request :HttpRequest):
+    return render(request  , "clinic/only_manage.html")
 
 def Doctor_detail(request :HttpRequest , Doctor_id : int):
     try:
@@ -46,11 +49,12 @@ def Doctor_detail(request :HttpRequest , Doctor_id : int):
 
     return render(request, "clinic/doctor_detail.html", {"doctors" : doctor})
 
-
+@login_required (login_url="account:logIn")
 def appointments(request :HttpRequest):
    if request.method == "POST":
         new_appointment = Appointment(patient_name = request.POST ["patient_name"] , case_description = request.POST ["case_description"] ,patient_age = request.POST["patient_age"] ,appointment_datetime = request.POST["appointment_datetime"] , is_attended = request.POST ["is_attended"] )
         new_appointment.save()
         return redirect("clinic:home")
    return render(request , "clinic/appointment.html")
+
 

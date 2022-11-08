@@ -8,27 +8,30 @@
 <script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
 <!------ Include the above in your HEAD tag ---------->
 <h3 style="font-family:Arial, Helvetica, sans-serif; text-align: center;"><div class="container" style="background-color:rgba(255, 255, 255, 0.719); border-radius: 20px; ">Register</h3></div>
-<div class="wrapper fadeInDown"> 
-  <div id="formContent">
 
-    <!-- Login Form -->
+<div class="wrapper fadeInDown">
+  <div id="formContent">
     <form action="{% url 'account:register' %}" method="POST">
         {% csrf_token %}
         <br>
+        <div class="container">
+          <div class="form-floating mb-3">
         
-            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username"><br><br>
+            <input type="name" class="form-control" id="floatingInput" placeholder="username" name="username"><br><br>
 
             <input type="email" class="form-control" id="floatingInput" placeholder="name@example.com" name="email"><br><br>
 
-            <input type="text" class="form-control" id="floatingInput" placeholder="First Name" name="first_name"><br><br>
+            <input type="name" class="form-control" id="floatingInput" placeholder="First Name" name="first_name"><br><br>
 
-            <input type="text" class="form-control" id="floatingInput" placeholder="Last Name" name="last_name"><br><br>
+            <input type="name" class="form-control" id="floatingInput" placeholder="Last Name" name="last_name"><br><br>
 
             <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password"><br><br>
           
 
   
       <input type="submit" class="fadeIn fourth" value="Sign in">
+        </div>
+        </div>
     </form>
 
   </div>
