@@ -1,0 +1,57 @@
+{% extends 'MoathClinic/base.html' %}
+{% load static %}
+{% block title %} Show Doctors {% endblock %}
+
+
+
+
+{% block content %}
+
+<h1>Best Doctors </h1>
+
+{% if "search" in request.GET %}
+<h2> Search results for "{{ request.GET.search }}": </h2>
+{% endif %}
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Description </th>
+                <th scope="col">Specialization</th>
+                <th scope="col">Experience Years</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doctor in doctors %}
+            <tr>
+                <th scope="row"><a href="{% url 'MoathClinic:doctor_detail' doctor.id %}" style=" color: red; ">{{ doctor.name }}</a></th>
+                <td>{{ doctor.description }}</td>
+                <td>{{ doctor.specialization }}</td>
+                <td>{{ doctor.experience_years }}</td>
+                <td>{{ doctor.rating }}</td>
+
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" style="background-color:  color white;" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Edit
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'MoathClinic:update_doctor' doctor.id %}">Update</a></li>
+                            <li><a class="dropdown-item" href="{% url 'MoathClinic:delete_doctor' doctor.id %}">Delete</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+{% endblock %}
