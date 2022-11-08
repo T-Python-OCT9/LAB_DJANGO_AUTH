@@ -1,0 +1,31 @@
+{% extends 'Clinic2/base.html' %}
+
+
+{% block content %}
+
+<div class="container w3-main" style="margin-left:230px;margin-right:40px;margin-top:75px">
+    <h1 class="w3-text-red">Register New user</h1>
+
+    <form action=" " method="POST" class="d-flex flex-column gap-2">
+       {% csrf_token %}
+
+        <strong class="">{{ msg }}</strong>
+    
+        <div class="form-floating">
+            <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
+            <label for="floatingInput">User Name</label>
+          </div>
+
+        <div class="form-floating">
+          <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password">
+          <label for="floatingPassword">Password</label>
+        </div>
+    
+        <button class="w-100  btn-primary "  type="submit">Sign in</button>
+       
+      </form>
+
+
+</div>
+
+{% endblock%}
