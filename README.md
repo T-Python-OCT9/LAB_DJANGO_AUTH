@@ -1,6 +1,6 @@
 # LAB_DJANGO_AUTH
 
-
+I'm still working on last lab
 ## Using your previous LAB “LAB_DJNAGO_ORM_3_RELATIONS”,
 
 ### Do the following:
