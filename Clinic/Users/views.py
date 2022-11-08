@@ -11,6 +11,7 @@ def registerUser(request : HttpRequest):
 
         new_user = User.objects.create_user(username=request.POST["username"], email= request.POST["email"], first_name=request.POST["first_name"], last_name=request.POST["last_name"], password=request.POST["password"])
         new_user.save()
+        print(new_user)
 
     return render(request, 'Users/registerUser.html')
 
@@ -19,6 +20,7 @@ def loginUser(request : HttpRequest):
     msg = ""
     if request.method == "POST":
         user = authenticate(request, username=request.POST["username"], password=request.POST["password"])
+        print(user)
         
         if user:
             login(request, user)

@@ -19,13 +19,6 @@
       {% if request.user.is_authenticated %}
                
 
-                  <li class="nav-item">
-                    <a class="nav-link tx-color" href="">>Welcome {{ request.user.first_name }}</a>
-                  </li>
-                    <li class="nav-item">
-                      <a class="nav-link tx-color" href="{% url 'Users:logout_user' %}">Logout</a>
-                    </li>
-                
-                  {% else %}
+
 
 
