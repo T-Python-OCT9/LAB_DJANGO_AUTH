@@ -1,0 +1,28 @@
+{% extends 'clinic/base.html' %}
+
+
+{% block content %}
+<div class="container">
+<h1>Login</h1>
+<form action="{% url 'clinc:login_user' %}" method="POST">
+    {% csrf_token %}
+    <strong class="">{{ msg }}</strong>
+    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+    <!-- username input -->
+    <div class="form-floating">
+        <input type="text" class="form-control" id="floatingInput" placeholder="username" name="username">
+        <label for="floatingInput">User Name</label>
+    </div>
+  
+    <!-- Password input -->
+    <div class="form-outline mb-4">
+      <input type="password" id="form2Example2" class="form-control"  name="password"/>
+      <label class="form-label" for="form2Example2">Password</label>
+    </div>
+  
+    <!-- Submit button -->
+    <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+  
+  </form>
+</div>
+{% endblock%}
