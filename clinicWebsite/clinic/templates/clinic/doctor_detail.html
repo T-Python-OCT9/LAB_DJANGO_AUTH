@@ -1,0 +1,43 @@
+{% extends 'clinic/home.html' %}
+{% block title %} {{doctors.name}} {% endblock%}
+{% block content %}
+
+<h1 style="font-family:Arial, Helvetica, sans-serif; text-align: center;"><div class="container" style="background-color:rgba(255, 255, 255, 0.8); border-radius: 20px; ">Doctor detail</h1></div>
+
+{% if "search"  in  request.GET %}
+    <h1 style="font-family:Arial, Helvetica, sans-serif; text-align: center;"><div class="container" style="background-color:rgba(255, 255, 255, 0.8); border-radius: 20px; ">Search results for "{{ request.GET.search }}":</h1></div>
+{% endif %}
+
+<div class="container">
+    <table class="table">
+        <thead>
+
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col"> description</th>
+            <th scope="col">rating</th>
+            <th scope="col">experience_years</th>
+            <th scope="col">specialization</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for doctors in doctor %}
+            <tr>
+                <th scope="row"><a href="{% url 'clinic:Doctor_detail' doctors.id %}">{{ doctors.name }}</a></th>
+                <td>{{ doctors.description }}</td>
+                <td>{{ doctors.rating }}</td>
+                <td>{{ doctors.experience_years }}</td>
+                <td>{{ doctors.specialization }}</td>
+                <td>
+
+
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+{% endblock %}

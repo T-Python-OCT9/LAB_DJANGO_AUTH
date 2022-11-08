@@ -1,0 +1,53 @@
+{% extends 'clinic/home.html' %}
+{% block title %} Add Doctor {% endblock%}
+{% block content %}
+
+
+<h1 style="font-family:Arial, Helvetica, sans-serif; text-align: center;"><div class="container" style="background-color:rgba(255, 255, 255, 0.719); border-radius: 20px; ">Add New Doctor</h1></div>
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label  class="form-label">Name</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">description</label>
+            <textarea type="text" class="form-control" name="description"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Rating</label>
+            <input type="text" class="form-control" name="rating">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">experience years</label>
+            <input type="number" class="form-control" name="experience_years">
+        </div>
+
+       
+          <div class="mb-3">
+            <label class="form-label"> specialization </label>
+            <select class="form-select" name="specialization">
+
+                <option value="surgery">surgery</option>
+                <option value="familyMedicine">familyMedicine</option>
+                <option value="dental">dental</option>
+                <option value="Audiology">Audiology</option>
+                <option value="Orthopedics & Rheumatology">Orthopedics & Rheumatology</option>
+                <option value="Physiotherapy">Physiotherapy</option>
+                <option value="Cardiac">Cardiac</option>
+             
+            </select>
+        </div>
+
+        <div class="d-grid gap-2">
+            <button class="btn btn-outline-secondary" type="submit" value="Add"> add</button><br>
+        </div>
+
+
+    </form>
+</div>
+{% endblock %}

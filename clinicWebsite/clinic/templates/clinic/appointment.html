@@ -1,0 +1,52 @@
+{% extends 'clinic/home.html' %}
+{% block title %} Appointments {% endblock%}
+{% block content %}
+
+
+<h1 style="font-family:Arial, Helvetica, sans-serif; text-align: center;"><div class="container" style="background-color:rgba(255, 255, 255, 0.719); border-radius: 20px; ">New Appointment</h1></div>
+<div class="container">
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label  class="form-label">Name</label>
+            <input type="text" class="form-control" name="patient_name">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">case description</label>
+            <textarea type="text" class="form-control" name="case_description"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Please entre your age</label>
+            <input type="number" class="form-control" name="patient_age">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Select date and time </label>
+            <input type="datetime-local" class="form-control" name="appointment_datetime">
+        </div>
+
+        <label required >is attended </label>
+        <div class="form-check" >
+          <input class="form-check-input"  type="radio" name="is_attended" value="True">
+          <label class="form-check-label" >
+            Yes
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input"  type="radio" name="is_attended" value="False">
+          <label class="form-check-label" >
+            No
+          </label>
+        </div> <br><br>
+        
+        <div class="d-grid gap-2">
+          <button class="btn btn-outline-secondary" type="submit" > Make an Appointment"</button><br>
+      </div>
+       
+    </form>
+
+  </div>
+
+{% endblock %}
