@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<h1>Add New Doctor</h1>
+
+<form action="" method="POST" enctype="multipart/form-data">
+
+    {% csrf_token %}
+    <div class="mb-3">
+        <label  class="form-label">Name</label>
+        <input type="text" class="form-control" name="name">
+    </div>
+
+    <div class="mb-3">
+        <label  class="form-label">Description</label>
+        <textarea type="text" class="form-control" name="description"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">specialization</label>
+        <select class="form-select" name="specialization">
+            <option selected>Open this select menu</option>
+            <option value="Ophthalmology">Ophthalmology</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Physical medicine and rehabilitation">Physical medicine and rehabilitation</option>
+            <option value="Preventive medicine">Preventive medicine </option>
+            <option value="Radiation oncology">Radiation oncology</option>
+            <option value="Surgery">Surgery    </option>
+            
+        </select>
+
+    </div>
+
+    <div class="mb-3">
+        <label  class="form-label">experience years</label>
+        <textarea type="text" class="form-control" name="experience_years"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">rating</label>
+        <select class="form-select" name="rating">
+            <option value="5">5</option>
+            <option value="4">4</option>
+            <option value="3">3</option>
+            <option value="2">2</option>
+            <option value="1">1</option>
+        </select>
+    </div>
+    <label  class="form-label">upload Image</label>
+    <input type="file" name="image" accept="image/*" class="form-control" />
+
+
+    
+    <input class="btn btn-primary" type="submit" value="add doctor" />
+</form>
+{% endblock %}
