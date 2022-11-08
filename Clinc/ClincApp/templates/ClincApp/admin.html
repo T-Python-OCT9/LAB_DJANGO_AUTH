@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+    <h1> Hi admin, add a new dintest</h1>
+
+<form action ="" method="POST">
+    {% csrf_token %}
+    <label>Name:</label>
+    <input name="name" type="text">
+    <label>Description :</label>
+    <textarea name="description"></textarea>
+    <label>Specialization:</label>
+    <input type="radio" id="O" name="choise" value="orthodontics">
+    <label for="O">orthodontics</label><br>
+    <input type="radio" id="F" name="choise" value="fillings">
+    <label for="F">fillings</label><br>
+
+    <label>Experience_years:</label>
+    <input type="number" nmae="experience_years">
+    <label>Rating :</label>
+    <input type="number" nmae="rating">
+    <button>submit</button>
+
+</form>
+
+
+</html>

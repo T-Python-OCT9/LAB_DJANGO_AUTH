@@ -1,0 +1,39 @@
+{% extends "ClincApp/base.html" %}
+
+{% block title %} {{ doctor.name }} {% endblock %}
+{% block content %}
+<h1>{{ doctor.name }}</h1>
+<div class="container">
+    <div>
+        <p> description: {{ doctor.description }} , specialization : {{ doctor.specialization }} , years of experience: {{ doctor.experience_years }}, rating:{{ doctor.rating }}</p>
+    </div>
+</div>
+
+<div class="container">
+
+    <h2>Appointments:</h2>
+    {% for appointment in  appointments %}
+        <div class="border rounded p-3 mt-3">
+            <p>{{ appointment.patient_name }}</p>
+            <span>{{ appointment.appointment_datetime }}</span>
+        </div>
+    {% endfor %}
+    
+    <hr/>
+    <h3>Boook an appointment: </h3>
+    <form action="{% url 'ClincApp:book_abiontment' doctor.id %}" method="POST">
+        {% csrf_token %}
+        <label class="form-label">Your Name:</label>
+        <input type="text" name="name" class="form-control" />
+         <label>Appointment Date: </label>
+         <input type="date" name="appointment_datetime">
+         
+        <label class="form-label">Your age:</label>
+        <textarea name="patient_age" class="form-control"></textarea>
+
+        <input type="submit" class="btn btn-primary mt-2" value="New Comment" />
+    </form>
+
+</div>
+
+{% endblock %}

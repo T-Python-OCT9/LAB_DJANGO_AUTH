@@ -1,0 +1,18 @@
+{% extends 'ClincApp/base.html' %}
+
+{% block title %} Our Posts {% endblock %}
+{% block content %}
+<div>
+
+    
+    
+        {% for n in doctor %} 
+        <p>
+            <a href="{% url 'ClincApp:viwe_details' n.id  %}"><h1>{{ n.name }}</h1></a>
+            <p> description: {{ n.description }} , specialization : {{ n.specialization }} , years of experience: {{ n.experience_years }}, rating:{{ n.rating }}</p>
+    </p>
+    {% endfor %}
+</div>
+
+
+{% endblock %}

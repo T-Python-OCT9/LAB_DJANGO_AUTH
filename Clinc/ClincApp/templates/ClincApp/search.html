@@ -1,0 +1,18 @@
+{% extends 'ClincApp/base.html' %}
+
+{% block title %} Search {% endblock %}
+{% block content %}
+<form action="{% url 'ClincApp:search' %}" method="GET">
+    {% csrf_token %}
+    <input name='search' type="text" placeholder="search" >
+    <button> search </button>
+</form>
+<div>
+    {% for n in doctor %} 
+    <p>
+        <a href="{% url 'ClincApp:viwe_details' n.id  %}"><h1>{{ n.name }}</h1></a>
+        <p> description: {{ n.description }} , specialization : {{ n.specialization }} , years of experience: {{ n.experience_years }}, rating:{{ n.rating }}</p>
+</p>
+{% endfor %}
+</div>
+{% endblock %}
