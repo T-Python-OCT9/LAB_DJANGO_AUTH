@@ -1,0 +1,24 @@
+{% extends 'WebsiteApp/base.html' %}
+
+{% block title %} Hope Clinics-DR.{{ Doctor.Docname }} Appointments {% endblock %}
+
+{% block content %}
+    <div class="container">
+        <h3>{{ Doctor.Docname }} /{{ Doctor.DocSpecialization }}</h3>
+        <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">Appointment date/time</th>
+                <th scope="col">Paitient Name</th>
+            </tr>
+            </thead>{%for app in appointment%}
+            <tbody>
+                <tr>
+                    <td>{{ app.Appointment_datetime }}</td>
+                    <td>{{ app.p_name }}</td>
+                    
+                </tr>
+            </tbody>{%endfor%}
+        </table>
+    </div>
+{%endblock%}

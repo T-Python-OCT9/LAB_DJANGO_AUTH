@@ -1,0 +1,23 @@
+{% extends 'WebsiteApp/base.html' %}
+
+{% block title %} Hope Clinics- Dr. {{doctor.Docname}} {% endblock %}
+{% block content %}
+
+<div class="d-flex flex-column gap-2" >
+    <h1 style="color:rgb(29, 59, 111) ;text-align:left;"></h1>
+    <div style="text-align:center  ;align-content: center;">
+        <div class="d-flex flex-column gap-2">
+            <h3 style="color:rgb(29, 59, 111);text-align:left ;margin-left:150px;"></t></t><a href="{% url 'WebsiteApp:doctor_appointments' doctor.id %}">Dr. {{ doctor.Docname }} </a></h3><br>                
+            <div style="text-align:left ; padding:0 10%;">
+                <lable style="color:rgb(29, 59, 111) ;">
+                    <strong style="color:rgb(29, 59, 111) ;">Doctor's specialty:</strong><br> </t>{{ doctor.DocSpecialization}}<br>
+                    <strong style="color:rgb(29, 59, 111) ;">Experience years:</strong><br> </t>{{doctor.experience_years}}<br>
+                    <strong style="color:rgb(29, 59, 111) ;">Doctor Rate:</strong><br> </t>{{ doctor.DocRate }}<br>
+                    <strong style="color:rgb(29, 59, 111) ;">Description:</strong><br> </t>{{doctor.DocDescrip}}<br>
+                    </lable><br>
+            </div>
+        </div>
+    
+    </div>
+</div>
+{% endblock %}

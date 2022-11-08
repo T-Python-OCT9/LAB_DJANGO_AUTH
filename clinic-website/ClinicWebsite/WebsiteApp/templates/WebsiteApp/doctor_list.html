@@ -1,0 +1,39 @@
+{% extends 'WebsiteApp/base.html' %}
+
+{% block title %} Hope Clinics-All Doctors {% endblock %}
+
+{% block content %}
+
+<h1>Our Doctors</h1>
+{% if "search"  in  request.GET %}
+    <h2> Search results for "{{ request.GET.search }}": </h2>
+{% endif %}
+<div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Doctor Name</th>
+            <th scoope="col">Specialization</th>
+            <th scope="col">Description</th>
+            <th scope="col">Rate</th>
+            <th scope="col">experience</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for doctor in doctors %}
+            <tr>
+                <th scope="row"><a href="{% url 'WebsiteApp:doctor_detail' doctor.id%}"> {{ doctor.Docname }} </a></th>
+                <td>{{ doctor.DocSpecialization }}</td>
+                <td>{{ doctor.DocDescrip }}</td>
+                <td>{{ doctor.DocRate }}</td>
+                <td style="text-align:center">{{ doctor.experience_years }} years</td>
+                
+                
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{%endblock%}
