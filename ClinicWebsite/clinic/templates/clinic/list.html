@@ -1,0 +1,38 @@
+{% extends 'clinic/base.html' %}
+{% block title %} Doctors List {% endblock %}
+{% block content %}
+<h1 class="my-3 border-bottom">Doctors</h1>
+<table class="table">
+    <thead>
+      <tr scope="row">
+        <th scope="col">Name</th>
+        <th scope="col" class="text-center">Specialization</th>
+        <th scope="col" class="text-center">Appointments</th>
+        <th scope="col" class="text-center">Rate</th>
+        <th scope="col" class="text-center">Experience Years</th>
+        {% if group == 'admin' %}
+        <th scope="col" class="text-center">Manage</th>
+        {% endif %}
+      </tr>
+    </thead>
+    <tbody>
+{% for doctor in doctors %}
+<tr scope="row">
+    <td scope="col"><i class="bi bi-arrow-return-right me-1"></i><i class="bi bi-journal-medical me-2"></i><a href="{% url 'clinic:detail' doctor.id %}" class="link-secondary">Dr. {{doctor.name}}</a></td>
+    <td scope="col" class="text-center"><i class="bi bi-hospital me-2"></i>{{doctor.specialization}}</td>
+    <td scope="col" class="text-center"><i class="bi bi-clipboard2-pulse me-2"></i>{{doctor.appointments}}</td>
+    <td scope="col" class="text-center"><i class="bi bi-star-half me-2"></i>{{doctor.rating}}</td>
+    <td scope="col" class="text-center"><i class="bi bi-award me-2"></i>{{doctor.experience_years}}</td>
+    {% if group == 'admin' %}
+    <td scope="col" class="text-center">
+      <div class="btn-group">
+          <a class="btn btn-outline-secondary" href="{% url 'clinic:update' doctor.id %}"><i class="bi bi-pencil-square"></i></a>
+          <a class="btn btn-outline-secondary" href="{% url 'clinic:remove' doctor.id %}"><i class="bi bi-trash"></i></a>
+      </div>
+    </td>
+    {% endif %}
+</tr>
+{% endfor %}
+</tbody>
+</table>
+{% endblock %}

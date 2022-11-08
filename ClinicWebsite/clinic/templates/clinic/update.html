@@ -1,0 +1,45 @@
+{% extends 'clinic/base.html' %}
+{% block title %}Update: Dr. {{doctor.name}}{% endblock %}
+{% block content %}
+<h1 class="my-3 border-bottom">Update: Dr. {{doctor.name}}</h1>
+<form class="row align-items-center" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25"><i class="bi bi-journal-medical me-2"></i>Name</div>
+        <input type="text" name="name" class="form-control" placeholder="Doctor Name" value="{{doctor.name}}">
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25"><i class="bi bi-hospital me-2"></i>Specialization</div>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="specialization">
+            <option disabled>Select Specialization</option>
+            {% for specialize in doctor_specializations %}
+                {% if doctor.specialization == specialize.0 %}<option value="{{specialize.0}}" selected>{{specialize.1}}</option>
+                {% else %}<option value="{{specialize.0}}">{{specialize.1}}</option>
+                {% endif %}
+            {% endfor %}
+          </select>          
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25"><i class="bi bi-blockquote-left me -2"></i>Description</div>
+        <textarea type="text" name="description" rows="10" class="form-control" placeholder="Doctor Description...">{{doctor.description}}</textarea>
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25"><i class="bi bi-award me-2"></i>Experience Years</div>
+        <input type="number" name="experience_years" class="form-control" placeholder="Years of Experience (numbers only)" min="0" max="40" value="{{doctor.experience_years}}">
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25"><i class="bi bi-star-half me-2"></i>Rate</div>
+        <input type="number" name="rating" class="form-control" placeholder="Rate out of 5 (number only)" min="0" max="5" step="0.1" value="{{doctor.rating}}">
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25"><i class="bi bi-card-image me-2"></i>Doctor Image</div>
+        <input type="file" name="image" class="form-control" accept="image/*" value="{{doctor.image.url}}">
+    </div>
+    <div class="input-group mb-2 justify-content-center mt-3">
+        <div class="btn btn-secondary" style="position: relative;">
+        <input type="submit" value="" class="w-100 h-100" style="position: absolute; top: 0; left: 0; opacity: 0;">
+        <i class="bi bi-plus-circle"></i> Update Doctor
+        </div>
+    </div>
+</form>
+{% endblock %}

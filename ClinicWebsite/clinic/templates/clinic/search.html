@@ -1,0 +1,29 @@
+{% extends 'clinic/base.html' %}
+{% block title %} Search {% endblock %}
+{% block content %}
+<h1 class="my-3 border-bottom"></h1>
+
+<div class="d-flex">
+    <div class="w-50 m-4 px-4 border rounder-3">
+        <h1 class="my-3 border-bottom pb-2">Search in Doctors</h1>
+        <form class="input-group mb-3 w-75 mx-auto" action="{% url 'clinic:search' %}" method="GET">            
+            <input type="search" class="form-control" placeholder="Search for Doctor..." name="doctor">
+            <button class="btn btn-outline-secondary" type="submit"><i class="bi bi-search"></i></button> 
+        </form>
+    </div>
+{% if request.GET.doctor|length > 1 %}
+{% if doctors %}
+<div class="w-50 m-4 px-4 border rounder-3">
+    <h1 class="my-3 border-bottom pb-2">Search Results for: {{request.GET.doctor}}</h1>
+    {% for doctor in doctors %}
+    <p class="ms-3"><i class="bi bi-arrow-return-right"></i> <a href="{% url 'clinic:detail' doctor.id %}" class="link-secondary">Dr. {{doctor.name}} <i class="bi bi-link-45deg"></i></a></p>
+    {% endfor %}
+</div>
+{% else %}
+<div class="w-50 m-4 px-4 border rounder-3">
+    <h1 class="my-3 pt-4">No Results for: {{request.GET.doctor}}</h1>
+</div>
+{% endif %}
+{% endif %}
+</div>
+{% endblock %}
