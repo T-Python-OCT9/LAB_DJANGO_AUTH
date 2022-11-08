@@ -1,0 +1,77 @@
+{% extends 'clinic/base.html' %}
+{% block title %} Dr. {{doctor.name}} {% endblock %}
+{% block content %}
+            <div class="w-75 m-4 px-4 border rounder-3 mx-auto">
+                <h1 class="my-3 border-bottom pb-2 ps-3"><img src="{{doctor.image.url}}" class=" mb-3 mt-1 rounded-5" style="height: 50px; width:50px; object-fit: cover;" alt="{{doctor.name}}" /> Dr. {{doctor.name}}</h1>
+                <p class="ms-5 d-flex justify-content-between">
+                    <span><i class="bi bi-hospital me-2"></i>{{doctor.specialization}}</span>
+                    <span class="d-flex align-items-center">
+                        <i class="bi bi-clipboard2-pulse me-2"></i> Appointments: {{count}}
+                    </span>
+                </p>
+                <p class="ms-3 mb-4 ps-4">{{doctor.description}}</p>
+            </div>
+            <div class="w-75 m-4 px-4 border rounder-3 mx-auto">
+                <h1 class="my-3 border-bottom pb-2 ps-3">Book Appointment</h1>
+                <p class="ms-5 mb-4 ps-4">
+                    <form class="row align-items-center" action="{% url 'clinic:book' doctor.id %}" method="POST">
+                        {% csrf_token %}
+                        <div class="input-group mb-2">
+                            <div class="input-group-text w-25"><i class="bi bi-file-earmark-person me-2"></i>Name</div>
+                            <input type="text" name="name" class="form-control" value="{{request.user.username}}" disabled>
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-text w-25"><i class="bi bi-blockquote-left me -2"></i>Case</div>
+                            <textarea type="text" name="case" rows="10" class="form-control" placeholder="Case Description..."></textarea>
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-text w-25"><i class="bi bi-calendar-week me-2"></i>Age</div>
+                            <input type="number" name="age" class="form-control" placeholder="Age (numbers only)" min="0" max="40">
+                        </div>
+                        <div class="input-group mb-2">
+                            <div class="input-group-text w-25"><i class="bi bi-calendar3 me-2"></i>Date</div>
+                            <input type="datetime-local" name="date" class="form-control" value="{{date}}">
+                        </div>
+                        <div class="input-group mb-2 justify-content-center mt-3">
+                            <div class="btn btn-secondary" style="position: relative;">
+                            <input type="submit" class="w-100 h-100" style="position: absolute; top: 0; left: 0; opacity: 0;">
+                            <i class="bi bi-plus-circle"></i> Book Appointment
+                            </div>
+                        </div>
+                    </form>
+                </p>
+            </div>
+            <div class="w-75 m-4 px-4 border rounder-3 mx-auto">
+                <h1 class="my-3 border-bottom pb-2 ps-3">Appointments</h1>
+                <p class="ms-5 mb-4 ps-4">
+                    <table class="table">
+                        <thead>
+                          <tr scope="row">
+                            <th scope="col">Name</th>
+                            <th scope="col" class="text-center">Date</th>
+                            <th scope="col" class="text-center">Age</th>
+                            <th scope="col" class="text-center">Case</th>
+                            <th scope="col" class="text-center">Attended</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                    {% for appointment in appointments %}
+                    <tr scope="row">
+                        <td scope="col"><i class="bi bi-arrow-return-right me-1"></i><i class="bi bi-file-earmark-person me-2"></i>{{appointment.name}}</td>
+                        <td scope="col" class="text-center"><i class="bi bi-calendar3 me-2"></i>{{appointment.date}}</td>
+                        <td scope="col" class="text-center"><i class="bi bi-calendar-week me-2"></i>{{appointment.age}}</td>
+                        <td scope="col" class="text-center"><i class="bi bi-blockquote-left me -2"></i>{{appointment.case}}</td>
+                        <td scope="col" class="text-center">
+                            {% if appointment.attended %}
+                            <i class="bi bi-check-lg fs-5"></i>
+                            {% else %}
+                            <i class="bi bi-x-lg fs-5"></i>
+                            {% endif %}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    </tbody>
+                    </table>                                    
+                </p>
+            </div>
+{% endblock %}
