@@ -13,23 +13,23 @@
       <form action="" method="POST" class="m-5">
           {% csrf_token %}
           <label class="p-2"><h4>Name:</h4></label>
-          <input class="form-control form-control-lg" name = "name" type="text" placeholder="" aria-label=".form-control-lg example">
+          <input value="{{doctor.name}}" class="form-control form-control-lg" name = "name" type="text" placeholder="" aria-label=".form-control-lg example">
           <label class="p-2"><h4>Description:</h4></label>
           <div class="input-group">
-            <textarea class="form-control p-4" name = "description" aria-label="With textarea"></textarea>
+            <textarea class="form-control p-4" name = "description" aria-label="With textarea">{{doctor.description}}</textarea>
           </div>
 
           <label class="p-2"><h4>Specialization:</h4></label>
           <select name ="specialization" class="form-select" aria-label="Default select example">
-            <option selected value="Nose">Nose</option>
+            <option selected value="{{doctor.specialization}}">{{doctor.specialization}}</option>
             <option value="Ear">Ear</option>
             <option value="thraut">Thraut</option>
           </select>
           <label class="p-2"><h4>Experience Years:</h4></label>
-          <input class="form-control form-control-lg" name = "experience_years" type="text" placeholder="" aria-label=".form-control-lg example">
+          <input value="{{doctor.experience_years}}" class="form-control form-control-lg" name = "experience_years" type="text" placeholder="" aria-label=".form-control-lg example">
 
           <label for="disabledRange" class="p-2 form-label"><h4>Rating:</h4></label>
-          <input name="rating" type="range" class="form-range" id="disabledRange">
+          <input value="{{doctor.rating}}" name="rating" type="range" class="form-range" id="disabledRange">
           <br><br>
 
           <div class="col-12 d-grid gap-2">

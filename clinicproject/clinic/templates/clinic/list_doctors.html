@@ -17,6 +17,7 @@
                 <th scope="col">Name</th>
                 <th scope="col">Specialization</th>
                 <th scope="col">Rating</th>
+                <th scope="col"></th>
               </tr>
             </thead>
 
@@ -26,6 +27,19 @@
                 <td><a href="{% url 'clinic:view_doctor' doctor.id %}">DR.{{doctor.name}}</a></td>
                 <td>{{doctor.specialization}}</td>
                 <td>{{doctor.rating}}</td>
+                {% if request.user.is_authenticated %}
+                <td>
+                  <div class="dropdown">
+                    <svg class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+                      <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                    </svg>
+                    <ul class="dropdown-menu">
+                      <li><a class="dropdown-item" href="{% url 'clinic:update_doctor' doctor.id %}">Update</a></li>
+                      <li><a class="dropdown-item" href="{% url 'clinic:delete_doctor' doctor.id %}">Delete</a></li>
+                    </ul>
+                  </div>
+                </td>
+                {% endif %}
               </tr>
               {% endfor %}
             </tbody>

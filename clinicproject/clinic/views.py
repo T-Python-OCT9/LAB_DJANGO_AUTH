@@ -58,6 +58,18 @@ def add_appointment(request:HttpRequest, doctor_id: int):
     return redirect("clinic:view_doctor", doctor.id)
 
 
+def delete_doctor(request: HttpRequest, doctor_id:int):
+
+    try:
+        doctor = Doctor.objects.get(id=doctor_id)
+    except:
+        return render(request , "clinic/not_found.html")
+
+    doctor.delete()
+
+    return redirect("clinic:list_doctors")
+
+
 def update_doctor(request: HttpRequest, doctor_id:int):
     try:
         doctor = Doctor.objects.get(id=doctor_id)
@@ -70,7 +82,7 @@ def update_doctor(request: HttpRequest, doctor_id:int):
             doctor.specialization = request.POST.get('specialization')
             doctor.experience_years = request.POST.get('experience_years')
             doctor.rating = request.POST.get('rating')
-            post.save()
+            doctor.save()
 
             return redirect("clinic:list_doctors")
 
