@@ -1,0 +1,32 @@
+{% extends 'ClinicApp/base.html' %}
+
+{% block title %} list of doctors {% endblock %}
+
+<!doctype html>
+<html lang="en">
+    {% block title %} list of doctors {% endblock %}
+  <body>
+    {% block body %}
+        <div class="container mt-5 mb-3 p-3">
+          <h3>Doctors</h3>
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col">Name</th>
+                <th scope="col">Specialization</th>
+                <th scope="col">Rating</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              {% for doctor in doctors %}
+              <tr>
+                {% csrf_token %}
+                <td><a href="{% url 'ClinicApp:view_doctor' doctor.id %}">DR.{{doctor.name}}</a></td>
+                <td>{{doctor.specialization}}</td>
+                <td>{{doctor.rating}}</td>
+              </tr>
+              {% endfor %}
+            </tbody>
+          </table>
+    {% endblock %}
