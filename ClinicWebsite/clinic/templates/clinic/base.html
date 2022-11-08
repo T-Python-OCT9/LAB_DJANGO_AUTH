@@ -25,8 +25,10 @@
             </ul>
             <ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
               {% if request.user.is_authenticated %}
-              <li class="nav-link px-2 text-white">Welcome, {{request.user.first_name}}</li>
-              <li><a href="{% url 'clinic:add' %}" class="nav-link px-2 text-white"><i class="bi bi-plus-circle-dotted"></i> ADD DOCTOR</a></li>
+              <li class="nav-link px-2 text-white">Welcome, {{request.user.username}}</li>
+                {% if group == 'admin' %}
+                <li><a href="{% url 'clinic:add' %}" class="nav-link px-2 text-white"><i class="bi bi-plus-circle-dotted"></i> ADD DOCTOR</a></li>
+                {% endif %}
               <li><a href="{% url 'accounts:logout_user' %}" class="nav-link px-2 text-white"><i class="bi bi-box-arrow-right"></i> LOGOUT</a></li>
               {% else %}
               <li><a href="{% url 'accounts:login_user' %}" class="nav-link px-2 text-white"><i class="bi bi-files"></i> LOGIN</a></li>

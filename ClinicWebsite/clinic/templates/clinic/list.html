@@ -10,7 +10,9 @@
         <th scope="col" class="text-center">Appointments</th>
         <th scope="col" class="text-center">Rate</th>
         <th scope="col" class="text-center">Experience Years</th>
+        {% if group == 'admin' %}
         <th scope="col" class="text-center">Manage</th>
+        {% endif %}
       </tr>
     </thead>
     <tbody>
@@ -21,12 +23,14 @@
     <td scope="col" class="text-center"><i class="bi bi-clipboard2-pulse me-2"></i>{{doctor.appointments}}</td>
     <td scope="col" class="text-center"><i class="bi bi-star-half me-2"></i>{{doctor.rating}}</td>
     <td scope="col" class="text-center"><i class="bi bi-award me-2"></i>{{doctor.experience_years}}</td>
+    {% if group == 'admin' %}
     <td scope="col" class="text-center">
       <div class="btn-group">
           <a class="btn btn-outline-secondary" href="{% url 'clinic:update' doctor.id %}"><i class="bi bi-pencil-square"></i></a>
           <a class="btn btn-outline-secondary" href="{% url 'clinic:remove' doctor.id %}"><i class="bi bi-trash"></i></a>
       </div>
-  </td>
+    </td>
+    {% endif %}
 </tr>
 {% endfor %}
 </tbody>
