@@ -1,0 +1,69 @@
+{% extends "Clinic2/base.html" %}
+
+{% block title %} details {% endblock %}
+
+
+{% block content %}
+
+<!-- !PAGE CONTENT! -->
+<div class="w3-main" style="margin-left:245px;margin-right:40px">
+          
+          
+    <div style="margin-top:75px">
+      <h1 class=" w3-text-red"><b>The Doctors:</b></h1>
+      <hr style="width:50px;border:5px solid red" class="w3-round">
+      
+      
+        <table class="table">
+         <thead>
+          <td>
+             <tr scope="row"> </tr>
+             <th scope="row">name</tr>
+             <th scope="row">description</tr>
+             <th scope="row">specialization</tr>
+             <th scope="row">experience_years</tr>
+             <th scope="row">rating</tr>
+          </td>
+         </thead>   
+         <tbody>
+          
+           <td> {% for m in doctor1 %}
+           <p class="  " >{{ m }}</p>
+           {% endfor %} </td>
+        
+        
+            <td> {% for m in doctor2 %}
+            <p class=" " > {{ m }}</p>
+            {% endfor %} </td>
+        
+            <td> {% for m in doctor3 %}
+            <p class=" " >  {{ m }}</p>
+            {% endfor %} </td>
+        
+            <td>{% for m in doctor4 %}
+            <p class=" " >  {{ m }}</p>
+            {% endfor %}  </td>
+           
+
+         </tbody>
+        
+        </table> 
+      
+      
+    </div>
+  
+    
+      
+    
+  
+
+  <!-- End page content -->
+</div>
+
+
+
+   
+    
+  
+
+{% endblock %}
