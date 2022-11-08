@@ -1,0 +1,50 @@
+{% extends 'clinic/base.html' %}
+
+    {% block title %} Our Posts {% endblock %}
+    
+    
+    
+    
+    {% block content %}
+    
+    <h1>Doctor List</h1>
+    
+    {% if "search"  in  request.GET %}
+        <h2> Search results for "{{ request.GET.search }}": </h2>
+    {% endif %}
+    
+    <div class="container">
+        
+                {% for post in posts %}
+                
+                {% endfor %}
+    
+            <table class="table">
+            <thead>
+            <tr>
+                <th scope="col">name</th>
+                <th scope="col">description</th>
+                <th scope="col">spec</th>
+                <th scope="col">experience_years</th>
+                <th scope="col">rating</th>
+
+            </tr>
+            </thead>
+            <tbody>
+                {% for doctor in doctors %}
+                <tr>
+                  {% csrf_token %}
+                  <td>{{doctors.name}}</td>
+                  <td>{{doctors.description}}</td>
+                  <td>{{doctors.spec}}</td>
+                  <td>{{doctors.experience_years}}</td>
+                  <td>{{doctors.rating}}</td>
+                  
+                </tr>
+                {% endfor %}
+              </tbody>
+            <tbody>
+                    
+    
+    
+    {% endblock %}</body></html>
