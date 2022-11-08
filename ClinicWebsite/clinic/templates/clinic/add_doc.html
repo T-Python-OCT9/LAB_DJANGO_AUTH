@@ -1,0 +1,45 @@
+{% extends 'clinic/base.html' %}
+
+{% block content %}
+    <h1>Add New Doctor</h1>
+
+    <div class="border border-success p-2 mb-2 border-opacity-10 mt-2" >
+ 
+    <div class="container">
+    <img src="https://images.pexels.com/photos/4021779/pexels-photo-4021779.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2" class="img-decent mt-2" />
+    </div>
+    <form action="" method="POST" class="container mt-3">
+        {% csrf_token %}
+        <div class="container center">
+            <label  class="form-label">Name</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+
+        <div class="container center">
+            <label  class="form-label">Description</label>
+            <textarea type="text" class="form-control" name="description"></textarea>
+        </div>
+
+        <div class="container center">
+        <select class="form-select" aria-label="Default select example" name="specialization">
+            <option selected>Select your specialization</option>
+            <option value="General Doctor">General Doctor</option>
+            <option value="Dentist">Dentist</option>
+            <option value="Psychiatric">Psychiatric</option>
+          </select>
+        </div>
+        <div class="container center">
+            <label  class="form-label">Experience years</label>
+            <input type="number" class="form-control" name="experience_years" />
+        </div>
+        <div class="container center ">
+            <label  class="form-label">Rating </label>
+            <input type="number" class="form-control" name="rating">
+
+            <div class="center">
+        <input class="btn btn-outline-primary" type="submit" value="Add Doctor" />
+            </div>   
+        </div>
+    </form>
+</div>
+{% endblock %}
