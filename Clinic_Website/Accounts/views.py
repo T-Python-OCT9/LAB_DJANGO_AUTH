@@ -11,8 +11,8 @@ def register(request: HttpRequest):
         user = User.objects.create_user(
             username=request.POST['username'], email=request.POST['email'], first_name=request.POST['first_name'], last_name=request.POST['last_name'], password=request.POST['password'])
         user.save()
-        request redirect('Accounts:login.html')
-    request render(request, 'Accounts/register.html')
+        return redirect('Accounts:login.html')
+    return render(request, 'Accounts/register.html')
 
 
 def login(request: HttpRequest):

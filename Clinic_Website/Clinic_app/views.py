@@ -2,6 +2,9 @@ import datetime
 from django.http import HttpRequest, HttpResponse
 from django.shortcuts import render, redirect
 from .models import Doctor, Appointment
+from django .contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
+
 # .models import
 # Create your views here.
 
@@ -13,9 +16,13 @@ def home(request: HttpRequest):
     else:
         doctors = Doctor.objects.all()
 
-    return render(request,"Clinic_app/home.html",{"doctors": doctors})
+    return render(request, "Clinic_app/home.html", {"doctors": doctors})
+
 
 def add_doctor(request: HttpRequest):
+    user: User = request.user
+    if not (user.is_authenticated and user.has_perm("Clinic_app.add_doctors")):
+        return redirect("Accounts:login")
     if request.method == "POST":
         doctors = Doctor(name=request.POST["name"], description=request.POST["description"], specialization=request.POST["specialization"],
                          experience_years=request.POST["experience_years"], rating=request.POST["rating"])
@@ -30,7 +37,7 @@ def detail_doctor(request: HttpRequest, doctor_id: int):
     except:
         return render(request, "Clinic_app/not_found.html")
 
-    return render(request, "Clinic_app/detail_doctor.html", {"doctor": doctor,"appointments": appointments})
+    return render(request, "Clinic_app/detail_doctor.html", {"doctor": doctor, "appointments": appointments})
 
 
 def delete_doctor(request: HttpRequest, doctor_id: int):
@@ -43,7 +50,11 @@ def delete_doctor(request: HttpRequest, doctor_id: int):
     return redirect("Clinic_app:home")
 
 
+@login_required
 def update_doctor(request: HttpRequest, doctor_id: int):
+    user: User = request.user
+    if not user.has_perm("Clinic_app.update_doctor"):
+        return redirect("Accounts:login")
     try:
         doctors = Doctor.objects.get(id=doctor_id)
     except:
@@ -67,7 +78,7 @@ def add_appointment(request: HttpRequest, doctor_id: int):
     doctor = Doctor.objects.get(id=doctor_id)
     if request.method == "POST":
         new_appointments = Appointment(doctor=doctor, patient_name=request.POST["patient_name"],
-                                   case_description=request.POST["case_description"], patient_age=request.POST["patient_age"], appointment_datetime=request.POST["appointment_datetime"], is_attended=request.POST["is_attended"])
+                                       case_description=request.POST["case_description"], patient_age=request.POST["patient_age"], appointment_datetime=request.POST["appointment_datetime"], is_attended=request.POST["is_attended"])
         new_appointments.save()
-    
+
         return redirect("Clinic_app:detail_doctor", doctor.id)

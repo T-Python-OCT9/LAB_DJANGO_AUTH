@@ -1,0 +1,50 @@
+{% extends 'Clinic_app/base.html' %}
+{% block content %}
+<div class="align-items-center justify-content-center">
+    {% if  message %}
+    <div class="alert alert-danger alert-dismissible "
+        role="alert">
+        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        {{ message}}
+    </div>
+    {% endif %}
+    <div class="row ">
+      <div class="col-lg-7 mx-auto">
+        <div class="card mt-2 mx-auto p-4 bg-light">
+            <div class="card-body bg-light">
+                <h1 class=" "> sign in </h1>
+            <div class = "container">
+             <form action="{% url 'accounts:login' %}" method="POST" class="container ">
+                {%csrf_token%}
+            <div class="controls">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <label for="form_name">name  :</label>
+                            <input  type="name" name="username" class="form-control"  >
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="Password">Password:</label>
+                            <input type="password" class="form-control" id="floatingPassword" placeholder="Password" name="password"></input>
+                            </div>
+                     </div></div>
+                     <div class="col-md-12">
+                        <button type="submit" class="btn btn-secondary btn-send  pt-2 btn-block">Sign in</button>
+                     </div>
+                     <a class="text-center " href="{% url 'accounts:register' %}">I don't have </a>
+                </div>
+        </div>
+         </form>
+        </div>
+            </div>
+
+
+    </div>
+   
+
+    </div>
+{% endblock%}
