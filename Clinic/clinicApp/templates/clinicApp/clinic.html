@@ -1,0 +1,241 @@
+{%load static%}
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Dentistry Clinic</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Zenh87qX5JnK2Jl0vWa8Ck2rdkQ2Bzep5IDxbcnCeuOxjzrPF/et3URy9Bv1WTRi" crossorigin="anonymous">
+  </head>
+
+  <style>
+    .bk-nav{
+        background-color: rgb(111, 127, 163);
+    }
+    .tx-color{
+        color: rgb(227, 239, 254);
+     
+    }
+    .img-size{
+        position: relative;
+        left: 800px;
+        top: 150px;
+        height: 400px;
+    }
+    h1{
+        color: rgb(111, 127, 163);
+    }
+    .text_p{
+        position: relative;
+        bottom: 150px;
+    }
+    .color-bt{
+        background-color: rgb(111, 127, 163);
+    }
+    .size_bt{
+        margin: 30px;
+        padding: 15px;
+        
+    }
+    .tex_co{
+        color: rgb(111, 127, 163);
+    }
+    .tex_co2{
+        color: rgb(51, 62, 87);
+    }
+    .img-sizee{
+      height: 900px;
+    }
+
+  </style>
+  <body>
+
+    <div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light">
+            <div class="container-fluid bk-nav p-3">
+              <a class="navbar-brand tx-color" href="#">Logo</a>
+              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03" aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+              </button>
+              <div class="collapse navbar-collapse" id="navbarColor03">
+                <ul class="navbar-nav me-auto">
+                  <li class="nav-item">
+                    <a class="nav-link tx-color" href="{% url 'clinicApp:home' %}">Home
+                      <span class="visually-hidden">(current)</span>
+                    </a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link tx-color" href="{% url 'clinicApp:po' %}">Doctors</a>
+                  </li>
+
+
+                  {% if request.user.is_authenticated %}
+
+                  <li class="nav-item">
+                    <a class="nav-link tx-color" href="">>Welcome {{ request.user.first_name }}</a>
+                  </li>
+                    <li class="nav-item">
+                      <a class="nav-link tx-color" href="{% url 'Users:logout_user' %}">Logout</a>
+                    </li>
+                    {% else %}
+
+
+                  <li class="nav-item">
+                    <a class="nav-link tx-color" href="{% url 'Users:login_user' %}">Login</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link tx-color" href="#">About</a>
+                  </li>
+
+                  {% endif %}
+                
+                 
+
+
+
+
+                </ul>
+                <form class="d-flex" role="search" method="GET" action="{% url 'clinicApp:po' %}">
+                <input class="form-control" type="search" placeholder="Search" name="search" aria-label="Search">
+                </form>
+              </div>
+            </div>
+          </nav>
+    </div>
+
+    {% block home %}
+
+
+
+    <div>
+      <!-- Carousel wrapper -->
+<div id="carouselBasicExample" class="carousel slide carousel-fade" data-mdb-ride="carousel">
+<!-- Indicators -->
+<div class="carousel-indicators">
+<button
+type="button"
+data-mdb-target="#carouselBasicExample"
+data-mdb-slide-to="0"
+class="active"
+aria-current="true"
+aria-label="Slide 1"
+></button>
+<button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="1" aria-label="Slide 2"></button>
+<button type="button" data-mdb-target="#carouselBasicExample" data-mdb-slide-to="2" aria-label="Slide 3"></button>
+</div>
+
+<!-- Inner -->
+<div class="carousel-inner">
+<!-- Single item -->
+<div class="carousel-item active">
+<img
+src="{% static 'image/photo3.jpg' %}"
+class="d-block w-100"
+alt="Sunset Over the City"
+/>
+<div class="carousel-caption d-none d-md-block">
+<h5>First slide label</h5>
+<p>
+Nulla vitae elit libero, a pharetra augue mollis interdum.
+</p>
+</div>
+</div>
+
+<!-- Single item -->
+<div class="carousel-item">
+<img
+src="{% static 'image/photo1.jpg' %}"
+class="d-block w-100"
+alt="Canyon at Nigh"
+/>
+<div class="carousel-caption d-none d-md-block">
+<h5>Second slide label</h5>
+<p>
+Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+</p>
+</div>
+</div>
+
+<!-- Single item -->
+<div class="carousel-item">
+<img
+src="{% static 'image/photo2.jpg' %}"
+class="d-block w-100"
+alt="Cliff Above a Stormy Sea"
+/>
+<div class="carousel-caption d-none d-md-block">
+<h5>Third slide label</h5>
+<p>
+Praesent commodo cursus magna, vel scelerisque nisl consectetur.
+</p>
+</div>
+</div>
+</div>
+<!-- Inner -->
+
+<!-- Controls -->
+<button
+class="carousel-control-prev"
+type="button"
+data-mdb-target="#carouselBasicExample"
+data-mdb-slide="prev"
+>
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Previous</span>
+</button>
+<button
+class="carousel-control-next"
+type="button"
+data-mdb-target="#carouselBasicExample"
+data-mdb-slide="next"
+>
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="visually-hidden">Next</span>
+</button>
+</div>
+<!-- Carousel wrapper -->
+</div>
+
+
+
+    <div id="imageHeader" class="">
+
+        <img class="img-size rounded float-right" src="{% static 'image/photo5.jpg' %}" alt="">
+
+
+    </div>
+
+    <div class="container">
+        <h1 class="text_p">Dentistry Clinic</h1>
+        <a href="{% url 'clinicApp:doctor'%}" class="btn color-bt tx-color size_bt ">Doctor</a>
+        <a href="" class="btn color-bt tx-color size_bt ">Appointment</a>
+       
+
+    </div>
+
+
+
+    {%endblock%}
+
+    {% block do %}
+    {%endblock%}
+
+    {% block pu %}
+    {%endblock%}
+
+    {% block add %}
+    {%endblock%}
+
+
+    {% block info %}
+    {%endblock%}
+
+
+
+
+
+
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-OERcA2EqjJCMA+/3y+gxIOqMEjwtxJY7qPCqsdltbNJuaOe923+mo//f6V8Qbsw3" crossorigin="anonymous"></script>
+  </body>
+</html>

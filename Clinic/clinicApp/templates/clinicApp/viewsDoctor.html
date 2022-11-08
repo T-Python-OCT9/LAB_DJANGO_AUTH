@@ -1,0 +1,100 @@
+{% extends "clinicApp/clinic.html" %}
+
+{% block home %}
+{%endblock%}
+
+
+
+{% block pu %}
+
+<div class="container pt-4">
+
+<h1 class="card-title tex_co2"> Dr.{{ postView.name }}</h1>
+<br>
+<h3 class="tex_co">years experience : {{ postView.experience_years }}</h3>
+<div class="pt-2 text-center tex_co">
+    <p class="tex_co2">who is he ?</p>
+{{ postView.description }}
+</div>
+
+</div>
+
+
+<hr>
+
+{% block info %}
+
+{% for doctor in app_info %}
+
+        <div class="border rounded p-3 mt-3">
+            <h5>{{ doctor.patient_name }}</h5>
+            <p>{{ doctor.case_description }}</p>
+            <span>{{ doctor.appointment_datetime }}</span>
+        </div>
+    {% endfor %}
+
+    {%endblock%}
+
+
+
+
+<hr>
+
+{% endblock %}
+
+{% block add %}
+<div class="pt-4 container">
+    <form action="{% url 'clinicApp:info' postView.id %}" method="POST" >
+        {% csrf_token %}
+    <div class="input-group mb-3">
+        <span class="input-group-text">Your name:</span>
+        <input type="text" class="form-control" name="patient_name">
+      </div>
+
+
+      <div class="input-group pt-4">
+        <span class="input-group-text">Case description :</span>
+        <textarea class="form-control" aria-label="With textarea" name="case_description"></textarea>
+      </div>
+
+      <div class="input-group mb-3 pt-4">
+        <span class="input-group-text">Age:</span>
+        <input type="text" class="form-control" name="patient_age">
+      </div>
+      
+
+      <div class="pt-2">
+        <label>Appointment datetime:</label>
+        <input type="date" name="appointment_datetime" />
+      </div>
+
+      <div class="pt-2">
+        <select name="is_attended" class="form-select" aria-label="Default select example">
+          <option selected>is attended ? </option>
+          <option value="True">yes</option>
+          <option value="False">no</option>
+        </select> 
+        </div>
+
+
+      <div class="pt-2">
+      <input type="submit" value="Create"/>
+
+    </div>
+
+    </form>
+</div>
+
+{%endblock%}
+
+        <hr>
+
+
+
+
+
+
+
+
+
+

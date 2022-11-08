@@ -10,3 +10,15 @@
 - Limit the access to adding a doctor page to the users in the Managers group only.
 
 
+
+
+     Username for admin page : AlaaAl
+     password : 123456
+
+
+      {% if request.user.is_authenticated %}
+               
+
+
+
+
