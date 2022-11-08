@@ -1,0 +1,48 @@
+{% extends 'WebsiteApp/base.html' %}
+
+{% block title %} Hope Clinics-Book Appointment {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="color:rgb(36, 101, 134) ;">Book New Appointment: </h1><br>
+        
+        <form action="{% url 'WebsiteApp:view_appointment' %}" method="POST">
+            {% csrf_token %}
+            <div class="mb-3">
+                <label class="form-lable">Doctor :</label><br>
+                <select name="doctor_id">
+                {% for doctor in doctors%}
+                    <option value={{doctor.id}}>{{ doctor.Docname }}/{{doctor.DocSpecialization}}</option>
+                {% endfor %}
+                </select>
+            </div>
+            <div><label style="color:rgb(7, 35, 78) ;">Patient Name:</label><br>
+            <input type="text" name="p_name" placeholder="Patient Name" /><br>
+            </div><br>
+            <div><label style="color:rgb(7, 35, 78) ;">Case Description:</label><br>
+                <textarea name="case_description" placeholder="Case Description"></textarea><br>
+            </div>
+                
+            <div class="mb-3">
+                <label  style="color:rgb(7, 35, 78) ;" class="form-label">Paitient Age</label><br>
+                <input type="text" name="p_age"placeholder='Paitient Age'>
+            </div>
+
+            <div class="mb-3">
+                <label  class="form-label">Appointment Date</label>
+                <input type="datetime-local" class="form-control" name="Appointment_datetime" />
+            </div>
+
+            <div class="mb-3">
+                <label class="form-label">Is Attend ?</label>
+                <select class="form-select" name="is_attend">
+                    <option value="True">Yes</option>
+                    <option value="False">No</option>
+                </select>
+            </div>
+        
+            <input type="submit" value="Create" />
+        </form>
+
+</div>
+{%endblock%}

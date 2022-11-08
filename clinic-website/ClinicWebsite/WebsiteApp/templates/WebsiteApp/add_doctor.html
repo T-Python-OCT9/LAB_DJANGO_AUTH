@@ -1,0 +1,40 @@
+{% extends 'WebsiteApp/base.html' %}
+
+{% block title %} Hope Clinics-Add doctor {% endblock %}
+
+{% block content %}
+<div class="container">
+    <h1 style="color:rgb(36, 101, 134) ;">Add New Doctor </h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div><label style="color:rgb(7, 35, 78) ;">Doctor Name:</label><br>
+        <input type="text" name="Docname" placeholder="DoctorName" /><br>
+        </div><br>
+
+        <div class="mb-3">
+            <label class="form-lable">Doctor Specialization:</label><br>
+            <select name="DocSpecialization">
+                {% for choice in Doctor.doc_spec_choices.choices %}
+                <option value="{{ choice.0 }}">{{ choice.1 }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div><label style="color:rgb(7, 35, 78) ;">Description:</label><br>
+        <textarea name="DocDescrip" placeholder="Description"></textarea><br>
+        </div>
+        <div><label style="color:rgb(7, 35, 78) ;">Doctor Rate:</label><br>
+            <input type="text" name="Doctor_Rate" placeholder="Doctor Rate" /><br>
+            </div>
+        
+        <div class="mb-3">
+            <label  style="color:rgb(7, 35, 78) ;" class="form-label">experience years</label><br>
+            <input type="text" name="experience_years"placeholder='experience years'>
+        </div>
+        
+        <input type="submit" value="Create" />
+    </form>
+
+</div>
+{%endblock%}
