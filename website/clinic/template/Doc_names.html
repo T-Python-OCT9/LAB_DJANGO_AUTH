@@ -1,0 +1,32 @@
+{% extends 'clinic/base.html' %}
+
+{% block content %}
+
+<h1>Doctors Names</h1>
+
+    <div class="container">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Name</th>
+            <th scope="col">Details</Details></th>
+            <th scope="col">Specialization</th>
+            <th scope="col">years of experience</th>
+        </tr>
+        </thead>
+        <tbody>
+            {% for doctor in doctors %}
+            <tr>
+                <th scope="row"><a href="{% url 'clinic:detail_page'  %}">{{ doctor.name }}</a></th>
+                <td>{{ doctor.details }}</td>
+                <td>{{ doctor.specialization }}</td>
+                <td>{{ doctor.experience_years }}</td>
+                
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+{% endblock %}
