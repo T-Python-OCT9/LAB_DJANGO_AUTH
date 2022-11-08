@@ -27,7 +27,7 @@
                 <td><a href="{% url 'clinic:view_doctor' doctor.id %}">DR.{{doctor.name}}</a></td>
                 <td>{{doctor.specialization}}</td>
                 <td>{{doctor.rating}}</td>
-                {% if request.user.is_authenticated %}
+                {% if request.user.is_authenticated and group == 'managers' %}
                 <td>
                   <div class="dropdown">
                     <svg class="dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
