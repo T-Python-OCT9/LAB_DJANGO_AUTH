@@ -1,0 +1,67 @@
+{% extends 'clinic/home.html' %}
+
+
+{% block content %}
+
+<div class="containter p-5 ">
+    <hr>
+<div class="container">
+    <h2>Dr. Name : {{ doctor.name }}</h2>
+    
+    <div>
+     About the Dr.   <strong>{{ <doctor class="details"></doctor> }}</strong>
+    </div>
+</div>
+</div>
+<hr>
+<div class="container">
+
+    <h2>Appointments</h2>
+
+
+    {% for appointment in appointments %}
+        <div class="border rounded p-3 mt-3">
+            <h5>Patient Name: {{ appointment.patient_name }}</h5> <hr>
+            <p>case description: {{ appointment.case_description }}</p>
+            <span>Patient age: {{ appointment.patient_age }}</span><hr>
+            <span>{{ appointment.appointment_datetime }}</span>
+            <span>{{ appointment.is_attended }}</span>
+        </div>
+    {% endfor %}
+    
+    <hr/>
+    <form action="{% url 'clinic:make_appointment' doctor.id %}" method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+        <label class="form-label">Patient Name:</label>
+        <input type="text" name="patient_name" class="form-control" />
+        </div>
+
+        <div class="mb-3">
+        <label class="form-label">Case Description:</label>
+        <textarea name="case_description" class="form-control"></textarea>
+        </div>
+
+        <div class="mb-3">
+        <label class="form-label">Patient Age:</label>
+        <input type="number" name="patient_age" >
+    </div>
+        <div class="mb-3">
+        <label class="form-label">Appointment Date:</label>
+        <input type="date" name="appointment_datetime" >
+        </div>
+        <div class="mb-3">
+            <label class="form-label">Is attended ?</label>
+            <select class="form-select" name="is_attended">
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+        </div>
+
+        <input type="submit" class="btn btn-primary mt-2" value="New Appointment" />
+    </form>
+
+</div>
+
+{% endblock %}
