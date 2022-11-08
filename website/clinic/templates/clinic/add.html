@@ -1,0 +1,39 @@
+{% extends 'clinic/base.html' %}
+{% block title %} Add Doctor {% endblock %}
+{% block content %}
+<div class="container">
+<h1 class="my-3 border-bottom">Add Doctor</h1>
+<form class="row align-items-center" action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25">Name</div>
+        <input type="text" name="name" class="form-control" placeholder="Doctor Name">
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25">Description</div>
+        <textarea type="text" name="description" rows="10" class="form-control" placeholder="Doctor Description..."></textarea>
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25">Experience Years</div>
+        <input type="number" name="experience_years" class="form-control" placeholder="Years of Experience (numbers only)" min="0" max="40">
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25">Rate</div>
+        <input type="number" name="rating" class="form-control" placeholder="Rate out of 5 (number only)" step="0.1" min="0" max="5">
+    </div>
+    <div class="input-group mb-2">
+        <div class="input-group-text w-25">Specialization</div>
+        <select class="form-select form-select-sm" aria-label=".form-select-sm example" name="specialization">
+            <option selected disabled>Select Specialization</option>
+            {% for specialize in specialization_choices %}
+                <option value="{{specialize.0}}">{{specialize.0}}</option>
+            {% endfor %}
+          </select>          
+    </div>
+    
+    <div class="input-group mb-2 justify-content-center mt-3">
+        <input type="submit" value="Save" class="btn btn-secondary">
+    </div>
+</form>
+</div>
+{% endblock %}

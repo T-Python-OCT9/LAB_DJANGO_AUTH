@@ -1,0 +1,69 @@
+{% extends 'clinic/base.html' %}
+{% load static%}
+
+{% block title %} Doctor Info {% endblock %}
+
+{% block content %}
+<hr class="featurette-divider">
+<div class="container mt-5">
+    <div class="p-4 p-md-5 mb-4 rounded bg-primary p-2 text-light bg-opacity-50">
+        <div class="col-md-6 px-0">
+          <h1 class="display-4 fst-italic">Meet Out Doctors!</h1>
+          <p class="lead my-3">From here you can browse the doctors information... </p>
+          
+        </div>
+      </div>
+      <hr class="featurette-divider">
+
+  <div class="row featurette bg-secondary p-2 text-dark bg-opacity-10">
+    <div class="col-md-6">
+      
+      <img src="{% static 'images/Shadi.jpg' %}"  width="400" height="500" class="d-block w-100 " alt="...">
+    </div>
+    <div class="col-md-6 pt-5">
+      <h2 class="featurette-heading fw-normal lh-1">Dr. Shadi Al-Sarhan</h2>
+      <p class="lead">Ophthalmology</p>
+      <p class="lead">Recipient of a fellowship from the World Council of Ophthalmology/London, Recipient of the Global Teaching Ophthalmologist Award from the American Academy of Ophthalmology/America
+    </p>
+
+      <a href="{% url 'clinic:book' %}" class="btn btn-primary btn-lg mt-4 bg-opacity-50">Book an Appointment!</a>
+    </div>
+    
+  </div>
+  <hr class="featurette-divider ">
+  <div class="row featurette mt-5 bg-secondary p-2 text-dark bg-opacity-10">
+    <div class="col-md-6 pt-5">
+      <h2 class="featurette-heading fw-normal lh-1">Dr. Hussain Jabad</h2>
+      <p class="lead">heart and blood vessels</p>
+      <p class="lead">Professor of Cardiac Surgery - College of Medicine, King Abdulaziz University - Jeddah - Canadian Fellowship for Cardio, Thoracic and Vascular Surgery 1991 University of Ottawa Canada - Specialized in adult cardiac surgery - coronary heart surgery
+    </p>
+
+      <a href="{% url 'clinic:book' %}" class="btn btn-primary btn-lg mt-4">Book an Appointment!</a>
+    </div>
+    <div class="col-md-6">
+      
+      <img src="{% static 'images/Doctor_male.jpg' %}"  width="400" height="500" class="d-block w-100 " alt="...">
+    </div>
+    
+    
+  </div>
+  <hr class="featurette-divider">
+  <div class="row featurette bg-secondary p-2 text-dark bg-opacity-10">
+    <div class="col-md-6">
+      
+      <img src="{% static 'images/Dr_famle.jpg' %}"  width="400" height="500" class="d-block w-100 " alt="...">
+    </div>
+    <div class="col-md-6 pt-5">
+      <h2 class="featurette-heading fw-normal lh-1">Dr. Mai Fayad</h2>
+      <p class="lead">General Medicine</p>
+      <p class="lead">Pharmacist from University of Science and Technology with MSc in Toxicology and Forensic Science
+    </p>
+
+      <a href="{% url 'clinic:book' %}" class="btn btn-primary btn-lg mt-4">Book an Appointment!</a>
+    </div>
+    
+  </div>
+  </div>
+
+  
+{% endblock %}

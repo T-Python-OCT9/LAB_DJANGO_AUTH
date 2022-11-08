@@ -1,0 +1,76 @@
+{% extends 'clinic/base.html' %}
+{% load static%}
+{% block content %}
+<div class="container">
+    <div class="p-4 p-md-5 mb-4 rounded text-bg-dark">
+        <div class="col-md-6 px-0">
+          <h1 class="display-4 fst-italic">Book Your Appointment!</h1>
+          <p class="lead my-3">From here you can book your Appointment... </p>
+          
+        </div>
+      </div>
+      <hr class="featurette-divider">
+
+      <div class="col-md-7 col-lg-8">
+        <h4 class="mb-3">Booking an Appointment</h4>
+        <form class="needs-validation" novalidate="" action="" method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Name</label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="name" required="" name="name">
+              <div class="invalid-feedback">
+                Valid first name is required.
+              </div>
+            </div>
+            
+            <div class="row g-3">
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Your Age : 
+              </label>
+              <input type="text" class="form-control" id="firstName" placeholder="" value="your age" name="patient_age" required="">
+              <div class="invalid-feedback">
+                Valid age is required.
+              </div>
+            </div>
+            <label for="firstName" class="form-label">Which clinic? 
+            </label>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+                  Choose here
+                </button>
+                <ul class="dropdown-menu">
+                  <li><button class="dropdown-item" type="button">General Medicine</button></li>
+                  <li><button class="dropdown-item" type="button">Heart and blood vessels</button></li>
+                  <li><button class="dropdown-item" type="button">Ophthalmology</button></li>
+                </ul>
+              </div>
+            
+
+            <div class="col-12">
+              <label for="address" class="form-label">Choose Date</label>
+              <input type="datetime-local" class="form-control" name="appointment_datetime"  />
+              <div class="invalid-feedback">
+                Please enter your shipping address.
+              </div>
+            </div>
+            <div class="col-sm-6">
+              <label for="firstName" class="form-label">Description</label>
+              <textarea type="textarea" class="form-control" id="firstName" placeholder="" value="Description" required="" name="description" ></textarea>
+              
+            </div>
+           
+          </div>
+
+          <hr class="my-4">
+
+          
+
+
+          <button class="w-100 btn btn-primary btn-lg" type="submit">Book</button>
+        </form>
+      </div>
+     
+
+</div>
+{% endblock %}

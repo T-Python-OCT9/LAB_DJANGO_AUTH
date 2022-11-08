@@ -1,0 +1,60 @@
+{% extends 'clinic/base.html' %}
+{% load static%}
+
+{% block title %} Home Page {% endblock %}
+
+{% block content %}
+<style>
+    .img-circle {
+    border-radius: 50%;
+}
+</style>
+<div id="carouselExampleControls" class="carousel slide " data-bs-ride="carousel">
+    <div class="carousel-inner">
+      <div class="carousel-item active">
+        <img src="{% static 'images/01.jpg' %}" class="d-block w-100 h-25" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/02.jpg' %}" class="d-block w-100 h-25" alt="...">
+      </div>
+      <div class="carousel-item">
+        <img src="{% static 'images/03.jpg' %}" class="d-block w-100 h-25" alt="...">
+      </div>
+    </div>
+    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Previous</span>
+    </button>
+    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="visually-hidden">Next</span>
+    </button>
+  </div>
+  
+
+  <p class="fs-2 m-4 bg-secondary p-2 text-dark bg-opacity-10">Our Top Raated Doctors :</p>
+  <hr class="featurette-divider">
+  <div class="row m-4 bg-secondary p-2 text-dark bg-opacity-10">
+    <div class="col-lg-4 ">
+       <img src="{% static 'images/Shadi.jpg' %}"  width="140" height="140" class=" img-circle " alt="...">
+      <h2 class="fw-normal mt-4">Dr. Shadi Al-Sarhan</h2>
+      <p>Ophthalmology 
+        </p>
+      <p><a class="btn btn-primary" href="{% url 'clinic:details' %}">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+    
+      <img src="{% static 'images/Doctor_male.jpg' %}"  width="140" height="140" class=" img-circle " alt="...">
+      <h2 class="fw-normal mt-4">Dr. Hussain Jabad</h2>
+      <p>heart and blood vessels</p>
+      <p><a class="btn btn-primary" href="{% url 'clinic:details' %}">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+    <div class="col-lg-4">
+        <img src="{% static 'images/Dr_famle.jpg' %}"  width="140" height="140" class=" img-circle " alt="...">
+
+      <h2 class="fw-normal mt-4">Dr. Mai Fayad</h2>
+      <p> General Medicine</p>
+      <p><a class="btn btn-primary" href="{% url 'clinic:details' %}">View details »</a></p>
+    </div><!-- /.col-lg-4 -->
+  </div>
+{% endblock %}
