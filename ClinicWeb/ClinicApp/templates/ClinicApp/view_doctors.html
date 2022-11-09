@@ -1,0 +1,75 @@
+{% extends 'ClinicApp/base.html' %}
+{% load static %}
+{% block title %} Our doctors {% endblock %}
+
+
+
+
+{% block content %}
+
+<h1>All Doctors </h1>
+
+{% if "search" in request.GET %}
+<h2> Search results for "{{ request.GET.search }}": </h2>
+{% endif %}
+
+<div class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th scope="col">Doctor Name</th>
+                <th scope="col">Description </th>
+                <th scope="col">Specialization</th>
+                <th scope="col">Experience Years</th>
+                <th scope="col">Rating</th>
+                <th scope="col">Edit</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for doctor in doctors %}
+            <tr>
+                <th scope="row"><a href="{% url 'ClinicApp:doctor_detail' doctor.id %}" style=" color: #35352d; ">{{ doctor.name }}</a></th>
+                <td>{{ doctor.description }}</td>
+                <td>{{ doctor.specialization }}</td>
+                <td>{{ doctor.experience_years }}</td>
+                <td>{{ doctor.rating }}</td>
+
+                <td>
+
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" style="background-color: #7b7b695d; color: #35352d;" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Edit
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li><a class="dropdown-item" href="{% url 'ClinicApp:update_doctor' doctor.id %}">Update</a></li>
+                            <li><a class="dropdown-item" href="{% url 'ClinicApp:delete_doctor' doctor.id %}">Delete</a></li>
+                        </ul>
+                    </div>
+
+                </td>
+            </tr>
+            {% endfor %}
+
+        </tbody>
+    </table>
+</div>
+
+
+
+
+
+
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleControls"
+            data-bs-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="visually-hidden">Next</span>
+        </button>
+    </div>
+</div>
+{% endblock %}

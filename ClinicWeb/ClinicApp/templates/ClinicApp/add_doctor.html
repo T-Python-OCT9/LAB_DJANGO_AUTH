@@ -1,0 +1,62 @@
+{% extends 'ClinicApp/base.html' %}
+
+{% block title %} Add New Doctor {% endblock %}
+
+{% block content %}
+    <h1>Add New Doctor</h1>
+
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label  class="form-label">Name</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Description</label>
+            <textarea type="text" class="form-control" name="description"></textarea>
+        </div>
+
+
+        <div class="mb-3">
+            <label  class="form-label">Specialization</label>
+            <select id="pet-select" name="specialization" value="{{doctor.specialization}}">
+                <option value="">Choose a specialty!!</option>
+                <option value="Family medicine">Pediatriciane</option>
+                <option value="Surgery">Dentist</option>
+                <option value="Anesthesiology">Ophthalmologist</option>  
+
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Experience Years</label>
+            <input type="integer" class="form-control" name="experience_years">  
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Description</label>
+            <textarea type="text" class="form-control" name="description"></textarea>
+        </div>
+
+        
+        <div class="mb-3">
+            <label class="form-label">rating</label>
+            <input type="range" class="form-range" name="rating" min="0" max="5" step="0.5" >       
+        </div>
+
+        <input class="btn btn-primary" style="
+        color: #373027;
+                    background-color:#3730272f;
+                    text-decoration: none;
+                    font-size: small;
+                    font-weight: 100;
+                    display: inline-block;
+                    padding: 0.9375em 2.1875em;
+                    letter-spacing: 1px;
+                    border-radius: 15px;
+                    margin-bottom: 40px;
+                    transition: 0.7s ease;" type="submit" value="Add Doctor" />
+    </form>
+{% endblock %}
+
