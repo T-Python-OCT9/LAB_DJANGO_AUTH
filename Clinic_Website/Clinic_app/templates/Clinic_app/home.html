@@ -1,0 +1,264 @@
+{% extends 'Clinic_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+ 
+      <!-- Bootstrap CSS -->
+		<link rel="stylesheet" href="assets/css/bootstrap.min.css">
+		
+		<!-- Fontawesome CSS -->
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/fontawesome.min.css">
+		<link rel="stylesheet" href="assets/plugins/fontawesome/css/all.min.css">
+    <link href="{% static 'Clinic_app/styles.css'%}" rel="stylesheet" >
+    <title>{% block title %}Clinic Website{% endblock %}</title>
+</head>
+<body>
+    {% block content %}
+    <!-- about section -->
+    <section id = "about" class = "about py">
+        <div class = "about-inner">
+            <div class = "container grid">
+                <div class = "about-left text-center">
+                    <div class = "section-head">
+                        <h2>About Us</h2>
+                        <div class = "border-line"></div>
+                    </div>
+                    <p class = "text text-lg">Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae molestias delectus facilis, temporibus eum consectetur, a debitis exercitationem quae distinctio aliquid ea ipsam vitae esse amet soluta maxime dolorem? Inventore ut maiores illo ipsum nisi, nulla eligendi unde reiciendis quod voluptas velit sit voluptate perferendis cum pariatur molestiae tenetur repellat!</p>
+                    <a href = "#" class = "btn btn-white">Learn More</a>
+                </div>
+                <div class = "about-right flex">
+                    <div class = "img">
+                        <img src = "{%static 'imges//about-img.png' %}">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- end of about section -->
+<section class="section section-specialities">
+				<div class="">
+					<div class="section-header text-center">
+						<h2>Clinic and Specialities</h2>
+						<p class="sub-title">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+					</div>
+					<div class="">
+						<div class="">
+							<div class="  center row row-cols-1 row-cols-md-2 g-3">
+								<div class=" text-center col-sm-6 col-md-5 col-lg-2 item">
+									<div class="speicality-img">
+										<img src="{%static 'imges/specialities-01.png'%}" class="img-fluid" alt="Speciality">
+										<span><i class="fa fa-circle" aria-hidden="true"></i></span>
+									</div>
+									<p>Urology</p>
+								</div>	
+								<div class=" text-center col-sm-6 col-md-5 col-lg-2 item">
+									<div class="speicality-img">
+										<img src="{%static 'imges/specialities-02.png'%}"  alt="Speciality">
+										<span><i class="fa fa-circle" aria-hidden="true"></i></span>
+									</div>
+									<p>Neurology</p>	
+								</div>							
+								<div class=" text-center col-sm-6 col-md-5 col-lg-2 item">
+									<div class="speicality-img">
+										<img src="{%static 'imges/specialities-03.png'%}" class="img-fluid" alt="Speciality">
+										<span><i class="fa fa-circle" aria-hidden="true"></i></span>
+									</div>	
+									<p>Orthopedic</p>	
+								</div>							
+								<div class=" text-center col-sm-6 col-md-5 col-lg-2 item">
+									<div class="speicality-img">
+										<img src="{%static 'imges/specialities-04.png'%}" class="img-fluid" alt="Speciality">
+										<span><i class="fa fa-circle" aria-hidden="true"></i></span>
+									</div>	
+									<p>Cardiologist</p>	
+								</div>							
+								<div class=" text-center col-sm-6 col-md-4 col-lg-3 item">
+									<div class="speicality-img">
+										<img src="{%static 'imges/specialities-05.png'%}" class="img-fluid" alt="Speciality">
+										<span><i class="fa fa-circle" aria-hidden="true"></i></span>
+									</div>	
+									<p>Dentist</p>
+								</div>							
+							</div>
+						</div>
+					</div>
+				</div>   
+			</section>	 
+    {% if "search"  in  request.GET %}
+    <div class="">
+       <h2> Search results for "{{ request.GET.search }}": </h2>
+    {% endif %}
+    </div>
+    <section class="section section-specialities container-fluid">
+        <div class="">
+            <div class=" text-center">
+                <h2>Book Our Doctor</h2>
+                <p>Lorem Ipsum is simply dummy text </p>
+            </div>
+            <div class="about-content  text-center">
+                <p>It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout. The point of using Lorem Ipsum.</p>
+                <p>web page editors now use Lorem Ipsum as their default model text, and a search for 'lorem ipsum' will uncover many web sites still in their infancy. Various versions have evolved over the years, sometimes</p>					
+                 
+            </div>
+        </div>
+        
+    </section>
+       <div class="grid">
+                  {% for doctor in doctors %}
+                <div class="profile-widget   text-center col-sm-6  col-lg-2 item ">
+                    <div class="doc-img">
+                        <a href="">
+                            <img class="img-fluid" alt="User Image" src="assets/img/doctors/doctor-01.jpg">
+                        </a>
+                    </div>
+                    <div class="pro-content">
+                        <h3 class="title">
+                            <a  class="" href="{% url 'Clinic_app:detail_doctor' doctor.id %}">{{doctor.name}}</a>
+                        </h3>
+                        <p class="speciality">{{doctor.description}}</p>
+                        <div class="rating">
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <i class="fas fa-star filled"></i>
+                            <span class="d-inline-block average-rating">{{doctor.rating}}</span>
+                        </div>
+                        <ul class="available-info">
+                            <li>
+                                {{doctor.specialization}}
+                            </li>
+                            <li>
+                                 {{doctor.experience_years}}
+                            </li>
+                            <li>
+                                <a href="{% url 'Clinic_app:update_doctor' doctor.id %}"><img class="post-meta" src="https://cdn-icons-png.flaticon.com/512/875/875100.png " width="16" height="16"class="bi bi-x-lg" viewBox="0 0 16 16"/></a> 
+
+                           </li>
+                            <li>
+                                <a href="{% url 'Clinic_app:delete_doctor' doctor.id %}"><img class="post-meta" src="https://cdn-icons-png.flaticon.com/512/1617/1617543.png" width="16" height="16"class="bi bi-x-lg" viewBox="0 0 16 16"/></a> 
+                            </li>
+                        </ul>
+                        <div class="row row-sm">
+                            <div class="col-6">
+                                <a href="{% url 'Clinic_app:detail_doctor' doctor.id %}" class="btn view-btn">View Profile</a>
+                            </div>
+                            <div class="col-6">
+                                <a href="{% url 'Clinic_app:add_appointment' doctor.id %}" class="btn book-btn">Book Now</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div></div></div>
+       
+        
+       {% endfor %}
+      <!-- contact section -->
+      <section id = "contact" class = "contact py">
+        <div class = "container grid">
+            <div class = "contact-left">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2384.6268289831164!2d-6.214682984112116!3d53.29621947996855!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x486709e0c9c80f8f%3A0x92f408d10f2277c2!2sREVO!5e0!3m2!1sen!2snp!4v1636264848776!5m2!1sen!2snp" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
+            <div class = "contact-right text-white text-center bg-blue">
+                <div class = "contact-head">
+                    <h3 class = "lead">Contact Us</h3>
+                    <p class = "text text-md">Lorem ipsum dolor sit amet consectetur adipisicing elit. Fuga.</p>
+                </div>
+                <form>
+                    <div class = "form-element">
+                        <input type = "text" class = "form-control" placeholder="Your name">
+                    </div>
+                    <div class = "form-element">
+                        <input type = "email" class = "form-control" placeholder="Your email">
+                    </div>
+                    <div class = "form-element">
+                        <textarea rows = "5" placeholder="Your Message" class = "form-control"></textarea>
+                    </div>
+                    <button type = "submit" class = "btn btn-white btn-submit">
+                        <i class = "fas fa-arrow-right"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+    <!-- end of contact section -->
+    
+    <!-- footer  -->
+    <footer id = "footer" class = "footer text-center">
+        <div class = "container">
+            <div class = "footer-inner text-white py grid">
+                <div class = "footer-item">
+                    <h3 class = "footer-head">about us</h3>
+                    
+                    <p class = "text text-md">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Debitis saepe incidunt fugiat optio corporis ea!</p>
+                    <address>
+                        Lorem, ipsum dolor sit amet <br>
+                         consectetur adipisicing elit<br>
+                        Co. Dublin, A94 E9D3 <br>
+                        Lorem,
+                    </address>
+                </div>
+
+                <div class = "footer-item">
+                    <h3 class = "footer-head">tags</h3>
+                    <ul class = "tags-list flex">
+                        <li>medical care</li>
+                        <li>emergency</li>
+                        <li>therapy</li>
+                        <li>surgery</li>
+                        <li>medication</li>
+                        <li>nurse</li>
+                    </ul>
+                </div>
+
+                <div class = "footer-item">
+                    <h3 class = "footer-head">Quick Links</h3>
+                    <ul>
+                        <li><a href = "#" class = "text-white">Our Services</a></li>
+                        <li><a href = "#" class = "text-white">Our Plan</a></li>
+                        <li><a href = "#" class = "text-white">Privacy Policy</a></li>
+                        <li><a href = "#" class = "text-white">Appointment Schedule</a></li>
+                    </ul>
+                </div>
+
+                <div class = "footer-item">
+                    <h3 class = "footer-head">make an appointment</h3>
+                    <p class = "text text-md">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatum, omnis.</p>
+                    <ul class = "appointment-info">
+                        <li>8:00 AM - 11:00 AM</li>
+                        <li>2:00 PM - 05:00 PM</li>
+                        <li>8:00 PM - 11:00 PM</li>
+                        <li>
+                            <i class = "fas fa-envelope"></i>
+                            <span>12345@gmail.com</span>
+                        </li>
+                        <li>
+                            <i class = "fas fa-phone"></i>
+                            <span>+000 000  0000</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class = "footer-links">
+                <ul class = "flex">
+                    <li><a href = "#" class = "text-white flex"> <i class = "fab fa-facebook-f"></i></a></li>
+                    <li><a href = "#" class = "text-white flex"> <i class = "fab fa-twitter"></i></a></li>
+                    <li><a href = "#" class = "text-white flex"> <i class = "fab fa-linkedin"></i></a></li>
+                </ul>
+            </div>
+        </div>
+    </footer>
+    <!-- end of footer  -->
+
+
+
+
+        
+     <script src="{% static 'Clinic_app/script.js' %}"></script>
+    {% endblock %}
+</body>

@@ -1,0 +1,89 @@
+{% extends 'Clinic_app/base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="{% static 'Clinic_app/styles.css'%}" rel="stylesheet" >
+   
+    <title>{% block title %} {{doctor.name}}{% endblock %}</title>
+</head>
+<body >
+    {% block content %}
+    <div class="row gx-4 gx-lg-5 justify-content-center">
+    <div class="col-md-10 col-lg-8 col-xl-7 ">
+    <div class="post-preview">
+        <h2 class="post-title">Name :{{doctor.name}}</h2>
+        <p class="post-subtitle">description:{{doctor.description}}</p>
+        <p class="post-subtitle">specialization:{{doctor.specialization}}</p>
+        <p class="post-meta">experience_years:{{doctor.experience_years}} </p>
+        <p class="post-meta">rating:{{doctor.rating}} </p>
+      
+    </div></div></div>
+    <hr>  <!--Table-->
+   \
+     <!-- Modal -->
+
+    {% for appointment in appointments%}
+     <div  class="row gx-4 gx-lg-5 justify-content-center">
+        <div class="post-preview">
+        <h3>{{appointment.patient_name}}</h3>
+        <p>{{appointment.case_description}}</p>
+        <p>{{appointment.patient_age}}</p>
+        <p>{{appointment.appointment_datetime}}</p>
+        <p>{{appointment.is_attended}}</p>
+        {% endfor %}
+        </div>
+     </div>
+    <hr>
+    <div class = "container">
+        <form  action="{% url 'Clinic_app:add_appointment' doctor.id %}" method="POST">
+           {%csrf_token%}
+            <div class="controls">
+             <div class="row">
+             <div class="col-md-6">
+                <div class="form-group">
+                    <label for="form_name">name:</label>
+                    <input  type="name" name="patient_name" class="form-control" placeholder="name  ..." >
+                </div>
+            </div>
+           </div>
+           <div class="row">
+            <div class="col-md-12">
+                <div class="form-group">
+                    <label for="case_description"> case description:</label>
+                    <textarea name="case_description" class="form-control" placeholder="Write your description here." rows="4"  ></textarea>
+                    </div>
+             </div></div>
+             <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label for="patient_age"> age: </label>
+                        <input  type="integer" name="patient_age" class="form-control" placeholder="age " >
+                    </div>
+                 </div></div>
+                 <div class="row">
+                    <div class="col-md-12">
+                        <div class="form-group">
+                            <label for="appointment_datetime"> appointment time: </label>
+                            <input  type="datetime-local" name="appointment_datetime" class="form-range" >
+                        </div>
+                     </div></div>
+                     <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="appointment_datetime"> is attended: </label>
+                                <select  type="datetime-local" name="is_attended" class="form-select" >
+                                    <option value="True">Yes</option>
+                                    <option value="False">No</option></select>
+                            </div>
+                         </div></div>
+                         <div class="col-md-12">
+                            <button type="submit" class="btn btn-secondary btn-send  pt-2 btn-block">add appointment</button>
+                    </div></div></form>
+    {% endblock %}
+    
+</body>
+</html>
