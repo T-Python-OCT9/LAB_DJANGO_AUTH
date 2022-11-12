@@ -1,0 +1,46 @@
+{% extends 'clinic/base.html' %}
+
+{% block Title %}   Add Appointment     {% endblock %}
+{% block content %}
+<div class="container text-light my-5 py-5">
+    <div class="my-2 py-1">
+<h1>Add Appointment</h1>
+<h6> For Doctor :{{ doctor.name }}</h6>
+</div>
+    <form action="" method="POST" class=" text-light">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label  class="form-label">Patient Name: </label>
+            <input type="text" class="form-control" name="patient_name">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Case Description</label>
+            <textarea type="text" class="form-control" name="case_description"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Patient Age</label>
+            <input type="number" class="form-control" name="patient_age" min="1" max="150" />
+        </div>
+        
+        
+        <div class="mb-3">
+            <label  class="form-label"> Appointment Datetime </label>
+            <input type="datetime-local" class="form-control" name="appointment_datetime" />
+        </div>
+
+
+        <div class="mb-3">
+            <label class="form-label">Is attended ?</label>
+            <select class="form-select" name="is_attended">
+                <option value="True">Yes</option>
+                <option value="False">No</option>
+            </select>
+        </div>
+        
+        <input class="btn text-dark bg-light" type="submit" value="Add Appointment" />
+    </form>
+</div>
+{% endblock %}

@@ -1,0 +1,42 @@
+{% extends 'clinic/base.html' %}
+
+{% block Title %}   Add Doctor     {% endblock %}
+{% block content %}
+<div class="container text-light my-4 py-4">
+    <h1 class=" text-light">Add Doctor</h1>
+    <form action="" method="POST">
+        {% csrf_token %}
+        <div class="mb-3 text-light">
+            <label  class="form-label">Name Doctor:</label>
+            <input type="text" class="form-control" name="name">
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Description</label>
+            <textarea type="text" class="form-control" name="description"></textarea>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Specialization is:</label>
+            <select class="form-select" name="specialization">
+                <option value="Anesthesiology">Anesthesiology</option>
+                <option value="Dermatology">Dermatology</option>
+                <option value="Ophthalmology">Ophthalmology</option>
+                <option value="Pediatrics">Pediatrics</option>
+            </select>
+        </div>
+
+        <div class="mb-3">
+            <label  class="form-label">Experience Years</label>
+            <input type="number" class="form-control" name="experience_years" min="0" max="30" />
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Rating (between 1 and 5):</label>
+            <input type="number" class="form-control" step="0.1" name="rating" min="1.0" max="5.0">
+        </div>
+
+        <input class="btn text-dark bg-light" type="submit" value="Add Doctor" />
+    </form>
+</div>
+{% endblock %}
