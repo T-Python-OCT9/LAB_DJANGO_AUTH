@@ -1,0 +1,42 @@
+{% extends 'clinic/base.html' %}
+
+{% block Title %}   Doctor Detail     {% endblock %}
+{% block content %}
+<div class="container text-dark my-5 py-5 bg-light">
+<h1>Doctor {{ doctor.name }} Detail</h1>
+<h5>{{ doctor.specialization }} ( {{ doctor.experience_years }} )Years</h5>
+<p class="card-text">{{ doctor.description }}</p>
+<p>Rating is :{{ doctor.rating }}</p>
+<div>
+    <h1>Appointment</h1>
+    <table class="table">
+        <thead>
+          <tr>
+            <th scope="col">Patient Name</th>
+            <th scope="col">Case Description</th>
+            <th scope="col">Patient Age</th>
+            <th scope="col">Date</th>
+            <th scope="col">Attended</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% for appointment in appointments %}
+          <tr>
+            <td>{{ appointment.patient_name }}</td>
+            <td>{{ appointment.case_description }}</td>
+            <td>{{ appointment.patient_age }}</td>
+            <td>{{ appointment.appointment_datetime }}</td>
+            <td>{{ appointment.is_attended }}</td>
+          </tr>
+          {% endfor %}
+        </tbody>
+      </table>
+</div>
+
+
+</div>
+
+
+
+
+{% endblock %}
